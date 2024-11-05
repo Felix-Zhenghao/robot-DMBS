@@ -65,3 +65,4 @@ print(np.fromstring(array, sep=' ').reshape(result[-1]['shape0'], result[-1]['sh
 #  [0.64451626 0.95533431 0.26276553]
 #  [0.22059957 0.59640218 0.05554185]]
 ```
+

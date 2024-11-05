@@ -22,3 +22,4 @@ Pillow
 opencv-python
 pynput
 pymysql
+robosuite==1.4.1
