@@ -5,14 +5,24 @@
 git clone https://github.com/Felix-Zhenghao/robotDB.git
 cd robotDB
 ```
+- Setup the virtual environment
+```
+python -m venv .venv
+source .venv/bin/activate
+```
 - Install python package dependencies
 ```
 pip install -r requirements.txt
 ```
-- Checkout robosuite `v1.4.1` to avoid import error
+- Set name of the submodules. `pip` won't install anything, it will just setup the name field.
 ```
-cd robosuite
-git checkout v1.4.1
+cd robomimic
+pip install -e .
+cd ..
+
+cd mimicgen
+pip install -e .
+cd ..
 ```
 - Check your installation
 ```

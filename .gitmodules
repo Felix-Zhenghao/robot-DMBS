@@ -1,0 +1,10 @@
+[submodule "robosuite"]
+	path = robosuite
+	url = https://github.com/Felix-Zhenghao/robosuite.git
+	branch = v1.4.1
+[submodule "mimicgen"]
+	path = mimicgen
+	url = https://github.com/Felix-Zhenghao/mimicgen.git
+[submodule "robomimic"]
+	path = robomimic
+	url = https://github.com/Felix-Zhenghao/robomimic.git
