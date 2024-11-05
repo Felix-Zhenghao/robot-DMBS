@@ -1,0 +1,24 @@
+# Requirements from mimicgen, robosuite, robomimic, and mysql
+numpy>=1.13.3
+h5py
+tqdm
+imageio
+imageio-ffmpeg
+gdown
+chardet
+huggingface_hub
+psutil
+termcolor
+tensorboard
+tensorboardX
+matplotlib
+egl_probe>=1.0.1
+torch
+torchvision
+numba>=0.49.1
+scipy>=1.2.3
+mujoco>=2.3.0
+Pillow
+opencv-python
+pynput
+pymysql
