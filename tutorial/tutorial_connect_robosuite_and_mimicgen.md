@@ -1,5 +1,5 @@
 # DOC VERSION: 1.0
-> See [`tutorial/connect_robosuite_and_mimicgen.md`](https://github.com/Felix-Zhenghao/robotDB/blob/main/tutorial/example_connect_robosuite_and_mimicgen.py) to see the code example of this doc.
+> See [`tutorial/example_connect_robosuite_and_mimicgen.py`](https://github.com/Felix-Zhenghao/robotDB/blob/main/tutorial/example_connect_robosuite_and_mimicgen.py) to see the code example of this doc.
 
 The key take away is: **MimicGen use some env interfaces only provided in env instances of robomimic, so if you initialize the env directly from robosuite env, you can't use data generation pipeline of MimicGen.**
 
