@@ -1,5 +1,5 @@
 # DOC VERSION: 1.0
-> See [`tutorial/connect_robosuite_and_mimicgen.md`](https://github.com/Felix-Zhenghao/robotDB/blob/main/tutorial/example_connect_robosuite_and_mimicgen.md) to see the code example of this doc.
+> See [`tutorial/connect_robosuite_and_mimicgen.md`](https://github.com/Felix-Zhenghao/robotDB/blob/main/tutorial/example_connect_robosuite_and_mimicgen.py) to see the code example of this doc.
 
 The key take away is: **MimicGen use some env interfaces only provided in env instances of robomimic, so if you initialize the env directly from robosuite env, you can't use data generation pipeline of MimicGen.**
 
@@ -45,7 +45,7 @@ When we call `step(action)` of an MujocoEnv, the return value will be a 4-elemen
 # Method to initialize the environment properly
 The key take away is: **MimicGen use some env interfaces only provided in env instances of robomimic, so if you initialize the env directly from robosuite env, you can't use data generation pipeline of MimicGen.**
 
-There are three steps, see [here]((https://github.com/Felix-Zhenghao/robotDB/blob/main/tutorial/example_connect_robosuite_and_mimicgen.md)) for code:
+There are three steps, see [here]((https://github.com/Felix-Zhenghao/robotDB/blob/main/tutorial/example_connect_robosuite_and_mimicgen.py)) for code:
 - Register the environment my inheriting from any class inherited from `MujocoEnv` of robosuite.
 - Prepare `env_meta`
 - Use `RobomimicUtils.create_env()` to instantiate the environment
