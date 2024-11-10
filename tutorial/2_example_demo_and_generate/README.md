@@ -1,9 +1,13 @@
-# DOC VERSION 1.0
+# DOC VERSION 2.0
 This tutorial is used the show the whole pipeline of:
 - Collecting demonstration data through human teleoperation
 - Generate data according to the human demonstration just created
 
-Let's go through step by step.
+You can directly run `main.py` to undergo these two things:
+- Teleoperate the robot (see [here](https://robosuite.ai/docs/algorithms/demonstrations.html#keyboard-controls) to understand how to control the robot using the keyboard)
+- Generate data from your demonstation. **The generation process will be rendered so that you can the generation process** :)
+
+Let's go through the whole pipeline step by step.
 
 # Step 1: Define the task specification 
 The task specification is used to tell the data generation system how split the subtask and how to figure out the termination of a subtask. For every task, you should define a task specification. See [here](https://mimicgen.github.io/docs/tutorials/datagen_custom.html#step-2-implement-task-specific-config) for more information.
