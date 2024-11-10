@@ -13,7 +13,7 @@ from robosuite.wrappers import Wrapper
 
 
 class DataCollectionWrapper(Wrapper):
-    def __init__(self, env, directory, collect_freq=1, flush_freq=100):
+    def __init__(self, env, env_interface, directory, collect_freq=1, flush_freq=100):
         """
         Initializes the data collection wrapper.
 
@@ -27,9 +27,11 @@ class DataCollectionWrapper(Wrapper):
 
         # the base directory for all logging
         self.directory = directory
+        self.env_interface = env_interface
 
         # in-memory cache for simulation states and action info
         self.obs_kwargs = {}
+        self.datagen_info = {}
         self.action_infos = []  # stores information about actions taken
         self.successful = False  # stores success state of demonstration
 
@@ -114,12 +116,17 @@ class DataCollectionWrapper(Wrapper):
             successful=self.successful,
             env=env_name,
             initial_state=self.initial_state,
-            **self.obs_kwargs
+            **self.obs_kwargs,
+            **self.datagen_info
         )
         for key in self.obs_kwargs.keys():
             self.obs_kwargs[key] = []
+        for key in self.datagen_info.keys():
+            self.datagen_info[key] = []
         self.action_infos = []
         self.successful = False
+
+        return state_path
 
     def reset(self):
         """
@@ -147,6 +154,11 @@ class DataCollectionWrapper(Wrapper):
                 - (bool) whether the current episode is completed or not
                 - (dict) misc information
         """
+        if not self.has_interaction:
+            for key in self.env_interface.get_datagen_info().to_deep_dict()[0].keys():
+                self.datagen_info[key] = []
+        self.append_datagen_info(action)
+
         ret = super().step(action)
         self.t += 1
 
@@ -154,12 +166,13 @@ class DataCollectionWrapper(Wrapper):
         if not self.has_interaction:
             self._on_first_interaction()
             self.initial_state = self.env.sim.get_state().flatten()
-            for key, value in ret[0].items():
+            for key in ret[0].keys():
                 self.obs_kwargs[key] = []
 
         # collect the current simulation state if necessary
         if self.t % self.collect_freq == 0:
             self.append_kwargs_obs(ret[0])
+            # self.append_datagen_info(action)
 
             info = {}
             info["actions"] = np.array(action)
@@ -176,9 +189,17 @@ class DataCollectionWrapper(Wrapper):
         Override close method in order to flush left over data
         """
         if self.has_interaction:
-            self._flush()
+            path = self._flush()
         self.env.close()
+
+        return path
 
     def append_kwargs_obs(self, obs_dict):
         for key, value in obs_dict.items():
             self.obs_kwargs[key].append(value)
+    
+    def append_datagen_info(self, action):
+        dic,_,_ = self.env_interface.get_datagen_info(action=action).to_deep_dict()
+        for key in self.datagen_info.keys():
+            self.datagen_info[key].append(dic[key])
+        

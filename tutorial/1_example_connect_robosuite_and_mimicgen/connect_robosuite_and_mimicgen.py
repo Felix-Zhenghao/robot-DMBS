@@ -110,7 +110,8 @@ Start simulation
 """
 env.reset()
 for i in range(100):
-    result = env.step(np.random.randn(8))
+    action = np.random.randn(8)
+    result = env.step(action)
     env.render(mode='human',camera_name='frontview')
 
     # this is a unique method of EnvRobosuite
@@ -119,6 +120,7 @@ for i in range(100):
     # so initialize the env with RobomimicUtils.create_env() is essential
     print(env.get_observation())
 
-    # this is a unique method of RobosuiteInterface
+    # get_datagen_info() is a unique method of RobosuiteInterface
+    # it returns a DatagenInfo instance of a step in the simulation
     # we need the environment interface to get information for data generation
-    print(env_interface.get_datagen_info().eef_pose)
+    print(env_interface.get_datagen_info(action=action).to_dict())

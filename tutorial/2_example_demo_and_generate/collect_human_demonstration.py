@@ -77,4 +77,6 @@ def collect_human_trajectory(env, device, arm, env_configuration):
             task_completion_hold_count = -1  # null the counter if there's no success
 
     # cleanup for end of data collection episodes
-    env.close()
+    state_path = env.close()
+
+    return state_path

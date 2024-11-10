@@ -6,25 +6,12 @@ import imageio
 from robosuite import load_controller_config
 
 def replay_episode(npz_file_path,
+                   env,
                    gif_path="assets/video.mp4",
-                   camera="agentview"):
+                   camera="frontview"):
 
     dic = np.load(npz_file_path, allow_pickle=True)
 
-    config = {
-        "env_name": "Lift",
-        "robots": "Panda",
-        "controller_configs": load_controller_config(default_controller="OSC_POSE"),
-    }
-    env = suite.make(
-        **config,
-        has_renderer=True,
-        has_offscreen_renderer=True,
-        ignore_done=True,
-        use_camera_obs=True,
-        reward_shaping=True,
-        control_freq=20,
-    )
     env.sim.set_state_from_flattened(dic["initial_state"])
 
 
@@ -56,7 +43,7 @@ if __name__ == "__main__":
     )
     parser.add_argument(
         "--camera",
-        default="agentview",
+        default="frontview",
         help="Which camera view to take the video from",
     )
     args = parser.parse_args()
