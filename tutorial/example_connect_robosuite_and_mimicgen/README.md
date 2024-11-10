@@ -1,9 +1,11 @@
-# DOC VERSION: 1.0
-> See [`tutorial/example_connect_robosuite_and_mimicgen.py`](https://github.com/Felix-Zhenghao/robotDB/blob/main/tutorial/example_connect_robosuite_and_mimicgen.py) to see the code example of this doc.
+# DOC VERSION: 2.0
+> See `connect_robosuite_and_mimicgen.py` to see the code example of this doc.
 
-The key take away is: **MimicGen use some env interfaces only provided in env instances of robomimic, so if you initialize the env directly from robosuite env, you can't use data generation pipeline of MimicGen.**
+The key take away is: **There are two key components to generate data using MimicGen. The first is a simulation environment and the second is an environment interface.**. For the former, MimicGen use some env interfaces only provided in env instances of robomimic, so if you initialize the env directly from robosuite env, you can't use data generation pipeline of MimicGen. For the latter, it is used to get key information used during data generation.
 
-# Robosuite env single step return value
+# Key component 1: simulation environment
+
+## Robosuite env single step return value
 When we call `step(action)` of an MujocoEnv, the return value will be a 4-element tuple: `return observations, reward, done, info`. An example output of running `env = NutAssembly(robots = 'Panda', has_renderer=True)` is as follows. The (reward, done, info) is `(0.0, True, {})`, which is fairly simple.  
 ```
 (OrderedDict([('robot0_joint_pos_cos', array([ 0.98452707,  0.98368445,  0.87087543, -0.55853277,  0.99127572,
@@ -42,10 +44,17 @@ When we call `step(action)` of an MujocoEnv, the return value will be a 4-elemen
        -2.20261887e-03, -9.92675543e-01,  4.24876660e-02,  1.13070846e-01]))]), 0.0, True, {})
 ```
 
-# Method to initialize the environment properly
+## Method to initialize the environment properly
 The key take away is: **MimicGen use some env interfaces only provided in env instances of robomimic, so if you initialize the env directly from robosuite env, you can't use data generation pipeline of MimicGen.**
 
-There are three steps, see [here]((https://github.com/Felix-Zhenghao/robotDB/blob/main/tutorial/example_connect_robosuite_and_mimicgen.py)) for code:
+There are three steps, see [here]((https://github.com/Felix-Zhenghao/robotDB/blob/main/tutorial/example_connect_robosuite_and_mimicgen/connect_robosuite_and_mimicgen.py)) for code:
 - Register the environment my inheriting from any class inherited from `MujocoEnv` of robosuite.
 - Prepare `env_meta`
 - Use `RobomimicUtils.create_env()` to instantiate the environment
+
+# Key component 2: environment interface
+Two steps to initialize an environment interface:
+- Register the interface by inheriting from `RobosuiteInterface`, and define specific functions according to the env. Doc is [here](https://mimicgen.github.io/docs/tutorials/datagen_custom.html#step-1-implement-task-specific-environment-interface).
+- Call `make_interface` to create the interface instance.
+
+See [here]((https://github.com/Felix-Zhenghao/robotDB/blob/main/tutorial/example_connect_robosuite_and_mimicgen/connect_robosuite_and_mimicgen.py)) for code.
