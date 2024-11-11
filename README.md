@@ -1,8 +1,8 @@
 # Installation
 - [Install](https://dev.mysql.com/doc/mysql-installation-excerpt/5.7/en/) MySQL and create local connection instance.
-- Clone this repo
+- Clone this repo and its submodules
 ```
-git clone https://github.com/Felix-Zhenghao/robotDB.git
+git clone --recurse-submodules -j8 https://github.com/Felix-Zhenghao/robotDB.git
 cd robotDB
 ```
 - Setup the virtual environment
