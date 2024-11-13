@@ -1,3 +1,7 @@
+"""
+This file is deprecated. Please see main.py for the latest version.
+"""
+
 import pymysql.cursors
 import numpy as np
 import re

@@ -158,7 +158,6 @@ if __name__ == "__main__":
         """
         from data_collection_wrapper import DataCollectionWrapper
         from collect_human_demonstration import collect_human_trajectory
-        from replay import replay_episode
         from robosuite.wrappers import VisualizationWrapper
         from robosuite.devices import Keyboard
 
@@ -198,6 +197,4 @@ if __name__ == "__main__":
                         camera_names=["agentview"],
                         render=True)
     
-        return generated_traj
-    
-    tutorial_2()
+        return state_path, generated_traj

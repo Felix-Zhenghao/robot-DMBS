@@ -5,3 +5,6 @@ Please read the tutorial in this order. Each tutorial contains \geq 0 utility py
 3. `store_data_in_db`. [WIP]
 
 # Concept explanation
+1. Task specification
+
+2. 
