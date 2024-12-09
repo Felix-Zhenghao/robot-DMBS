@@ -1,0 +1,41 @@
+[
+    {
+        "object_ref": "drawer",
+        "subtask_term_signal": "open",
+        "subtask_term_offset_range": [
+            10,
+            20
+        ],
+        "selection_strategy": "random",
+        "selection_strategy_kwargs": null,
+        "action_noise": 0.05,
+        "num_interpolation_steps": 5,
+        "num_fixed_steps": 0,
+        "apply_noise_during_interpolation": false
+    },
+    {
+        "object_ref": "object",
+        "subtask_term_signal": "grasp",
+        "subtask_term_offset_range": [
+            10,
+            20
+        ],
+        "selection_strategy": "random",
+        "selection_strategy_kwargs": null,
+        "action_noise": 0.05,
+        "num_interpolation_steps": 5,
+        "num_fixed_steps": 0,
+        "apply_noise_during_interpolation": false
+    },
+    {
+        "object_ref": "drawer",
+        "subtask_term_signal": null,
+        "subtask_term_offset_range": null,
+        "selection_strategy": "random",
+        "selection_strategy_kwargs": null,
+        "action_noise": 0.05,
+        "num_interpolation_steps": 5,
+        "num_fixed_steps": 0,
+        "apply_noise_during_interpolation": false
+    }
+]

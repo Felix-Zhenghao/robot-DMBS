@@ -1,0 +1,55 @@
+[
+    {
+        "object_ref": "piece_1",
+        "subtask_term_signal": "grasp_1",
+        "subtask_term_offset_range": [
+            5,
+            10
+        ],
+        "selection_strategy": "random",
+        "selection_strategy_kwargs": null,
+        "action_noise": 0.05,
+        "num_interpolation_steps": 5,
+        "num_fixed_steps": 0,
+        "apply_noise_during_interpolation": false
+    },
+    {
+        "object_ref": "base",
+        "subtask_term_signal": "insert_1",
+        "subtask_term_offset_range": [
+            5,
+            10
+        ],
+        "selection_strategy": "random",
+        "selection_strategy_kwargs": null,
+        "action_noise": 0.05,
+        "num_interpolation_steps": 5,
+        "num_fixed_steps": 0,
+        "apply_noise_during_interpolation": false
+    },
+    {
+        "object_ref": "piece_2",
+        "subtask_term_signal": "grasp_2",
+        "subtask_term_offset_range": [
+            5,
+            10
+        ],
+        "selection_strategy": "random",
+        "selection_strategy_kwargs": null,
+        "action_noise": 0.05,
+        "num_interpolation_steps": 5,
+        "num_fixed_steps": 0,
+        "apply_noise_during_interpolation": false
+    },
+    {
+        "object_ref": "piece_1",
+        "subtask_term_signal": null,
+        "subtask_term_offset_range": null,
+        "selection_strategy": "random",
+        "selection_strategy_kwargs": null,
+        "action_noise": 0.05,
+        "num_interpolation_steps": 5,
+        "num_fixed_steps": 0,
+        "apply_noise_during_interpolation": false
+    }
+]

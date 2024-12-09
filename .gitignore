@@ -140,3 +140,4 @@ dmypy.json
 # this pj
 parse_np.py
 ep_*/
+npz_*/

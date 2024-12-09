@@ -26,6 +26,14 @@ cd mimicgen
 pip install -e .
 cd ..
 ```
+
+- Install task_zoo
+```
+git clone https://github.com/ARISE-Initiative/robosuite-task-zoo
+cd robosuite-task-zoo
+pip install -e .
+```
+
 - Check your installation
 
 If you run the following commands and see a simulation scene on your computer, congratulations!
