@@ -45,7 +45,7 @@ for i in range(10):
 connection.commit()
 
 # Retrieve the newly inserted demonstrator IDs
-cursor.execute("SELECT demonstratorID FROM HumanDemonstrators ORDER BY demonstratorID DESC LIMIT 2;")
+cursor.execute("SELECT demonstratorID FROM HumanDemonstrators ORDER BY demonstratorID DESC;")
 demonstrator_ids = [row[0] for row in cursor.fetchall()]
 
 # Generate and insert diverse experience levels for each robot type and demonstrator
