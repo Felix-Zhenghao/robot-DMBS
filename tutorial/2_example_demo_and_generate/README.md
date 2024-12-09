@@ -97,3 +97,8 @@ The crux of data generation is to get the correct `DatagenInfo` from the source 
 - [Env interfaces](https://mimicgen.github.io/docs/tutorials/datagen_custom.html#step-1-implement-task-specific-environment-interface)
 
 I strongly recommend you to read through `tutorial/2_example_demo_and_generate/data_generator.py` and try to understand how data is generated given an `.npz` file by printing out intermediate contents.
+
+
+# Bonus
+If you want to try a more complex task, run `main_kitchen.py`. The task description is here:
+> Switch stove on, place pot onto stove, place bread into pot, place pot in front of serving region and push it there, and turn off the stove.

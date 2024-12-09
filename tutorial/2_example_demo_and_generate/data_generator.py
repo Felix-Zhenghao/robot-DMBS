@@ -61,12 +61,14 @@ def parse_source_dataset(
         subtask_term_offset_ranges = [subtask_spec["subtask_term_offset_range"] for subtask_spec in task_spec]
 
     assert len(subtask_term_signals) == len(subtask_term_offset_ranges)
-    subtask_term_signals[-1] = None
+    # subtask_term_signals[-1] = None
     subtask_term_offset_ranges[-1] = (0, 0)
 
     f = np.load(dataset_path, allow_pickle=True)
-    object_pose_keys = ["square_nut", "square_peg"]
-    subtask_term_keys = ["grasp"]
+    # object_pose_keys = ["square_nut", "square_peg"]
+    object_pose_keys = [subtask_dict["object_ref"] for subtask_dict in task_spec]
+    # subtask_term_keys = ["grasp"]
+    subtask_term_keys = [subtask_dict["subtask_term_signal"] for subtask_dict in task_spec]
 
     datagen_infos = []
     subtask_indices = []
@@ -78,7 +80,7 @@ def parse_source_dataset(
         ep_datagen_info_obj = DatagenInfo(
             eef_pose=ep_grp["eef_pose"][:],
             object_poses={ k : ep_grp[k][:] for k in object_pose_keys },
-            subtask_term_signals={ k : ep_grp[k][:] for k in subtask_term_keys },
+            subtask_term_signals={ k : ep_grp[k][:] for k in subtask_term_keys if k is not None},
             target_pose=ep_grp["target_pose"][:],
             gripper_action=ep_grp["gripper_action"][:],
         )
